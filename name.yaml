@@ -1,0 +1,15 @@
+- 
+  hosts: localhost 
+  remote_user: root
+  gather_facts: yes
+  vars_prompt:
+   - name: giveName
+     prompt: "Please provide your name"
+     private: no
+     failed_when: giveName is undefined
+  tasks:
+   - name: Python Execution
+     test1: yourName={{ giveName }}
+     register: result
+   - 
+     debug: var=result
